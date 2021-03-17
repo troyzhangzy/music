@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "z-playlist":"../../components/playlist/playlist"
-  }
+  },
+  "enablePullDownRefresh":true 
 }

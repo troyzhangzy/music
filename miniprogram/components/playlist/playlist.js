@@ -11,8 +11,6 @@ Component({
 
   observers:{
     ['playlist.playCount'](val){
-      console.log(val)
-      console.log(this._tranNumber(val,2))
       this.setData({
         _count:this._tranNumber(val,2)
       })
