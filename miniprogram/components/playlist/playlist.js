@@ -27,7 +27,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    goToMusiclist(){
+      wx.navigateTo({
+        url: `../../pages/musiclist/musiclist?playlistId=${this.properties.playlist.id}`,
+      })
+    },
     _tranNumber(num,point){
+      
       let number=num.toString().split('.')[0]
       if(number.length<6){
         return number
