@@ -1,55 +1,42 @@
-// pages/blog/blog.js
+// pages/blog-edit/blog-edit.js
+const MAX_WORDS_NUB=140
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      //控制底部弹出层是否显示
-      modalShow:false
+    //输入的文字个数
+    wordsNum:0,
+    footerBottom:0
   },
-  //发布功能
-  onPublish(){
-   wx.getSetting({
-      success:(res)=>{
-        console.log(res)
-        if(res.authSetting['scope.userInfo']){
-          wx.getUserInfo({
-            success:(res)=>{
-              this.onLoginSuccess({
-                detail:res.userInfo
-              })
-            }
-          })
-        }else{
-          this.setData({
-            modalShow:true
-          })
-        } 
-      }
-   })
-  },
-  onLoginSuccess(event){
-    //打印出用户的个人信息
-   //console.log(event) 
-    const detail=event.detail
-    wx.navigateTo({
-     url: `../blog-edit/blog-edit?nickName=${detail.nickName}&avatarUrl=${detail.avatarUrl}`,
-
+  onInput(event){
+    console.log(event.detail.cursor)
+    console.log(event)
+    let wordsNum=event.detail.cursor
+    if(wordsNum>=MAX_WORDS_NUB){
+      wordsNum=`最大字数为${MAX_WORDS_NUB}`
+    }
+    this.setData({
+      wordsNum
     })
   },
-  onLoginFail(){
-    wx.showModal({
-      title:'授权用户才能发布',
-      content:' ',
+  onFouce(event){
+    console.log(event)
+    this.setData({
+      footerBottom:event.detail.height
     })
   },
-
+  onBlur(){
+    this.setData({
+      footerBottom:0
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
   },
 
   /**

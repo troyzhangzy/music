@@ -4,7 +4,8 @@
     "pages/profile/profile",
     "pages/blog/blog",
     "pages/musiclist/musiclist",
-    "pages/player/player"
+    "pages/player/player",
+    "pages/blog-edit/blog-edit"
   ],
   "tabBar": {
     "color": "#000",
